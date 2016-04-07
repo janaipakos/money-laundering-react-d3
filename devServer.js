@@ -1,21 +1,11 @@
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
-var config = require('./webpack.config.dev');
 
 var app = express();
-var compiler = webpack(config);
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 var static_path = path.join(__dirname, 'public');
-
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
-
-app.use(require('webpack-hot-middleware')(compiler));
-
 
 app.use(express.static(static_path))
   .get('/', function (req, res) {
@@ -29,6 +19,14 @@ app.use(express.static(static_path))
 
 if (isDevelopment) {
   var config = require('./webpack.config.dev');
+  var compiler = webpack(config);
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
+
+app.use(require('webpack-hot-middleware')(compiler));
 
   napp.listen(3000, 'localhost', function(err) {
   if (err) {
