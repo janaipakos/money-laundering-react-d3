@@ -7,7 +7,7 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
@@ -24,11 +24,19 @@ module.exports = {
       }
     })
   ],
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-    }]
+    loaders: [
+      { test: /\.jsx$/,
+        loader: 'babel',
+        include: path.join(__dirname, 'src') },
+      { test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/ },
+       {test: /\.less$/,
+        loader: "style!css!less"}
+    ]
   }
-};
+}
