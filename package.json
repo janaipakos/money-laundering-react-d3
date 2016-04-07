@@ -2,9 +2,10 @@
   "name": "Money-Laundering-React-D3.js",
   "version": "1.0.0",
   "description": "A React + D3 histogram showing domestic money laundering statistics",
+  "main": "index.html",
   "scripts": {
     "clean": "rimraf dist",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
     "lint": "eslint src"
