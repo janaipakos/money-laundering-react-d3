@@ -2,8 +2,7 @@ var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
-var webpackMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
+
 var static_path = path.join(__dirname, 'dist');
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
@@ -13,6 +12,8 @@ var app = express();
 
 if (isDevelopment) {
   var compiler = webpack(config);
+  var webpackMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
 
 
 app.use(webpackMiddleware(compiler, {
