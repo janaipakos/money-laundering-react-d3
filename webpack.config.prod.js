@@ -23,7 +23,9 @@ module.exports = {
         warnings: false
       }
     })
-  ],
+  ],resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
     loaders: [{
       test: /\.js|\.jsx$/,
