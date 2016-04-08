@@ -51,15 +51,12 @@
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
     "rimraf": "^2.4.3",
-    "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0"
   },
   "dependencies": {
-
     "css-loader": "^0.23.1",
     "d3": "^3.5.12",
-
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
