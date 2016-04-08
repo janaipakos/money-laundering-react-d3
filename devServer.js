@@ -4,7 +4,6 @@ var webpack = require('webpack');
 var app = express();
 
 var static_path = path.join(__dirname, 'dist');
-var publicPaths = path.resolve(__dirname, 'public');
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 
 var port = isDevelopment ? 3000 : process.env.PORT;
@@ -34,7 +33,7 @@ app.use(webpackMiddleware(webpack(config), {
 });
 
 } else {
-app.use(express.static(publicPaths));
+app.use(express.static('public'));
 
  app.get('/', function response(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
