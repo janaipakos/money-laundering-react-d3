@@ -4,8 +4,9 @@
   "description": "A React + D3 histogram showing domestic money laundering statistics",
   "scripts": {
     "clean": "rimraf dist",
-    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js --progress --colors",
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",
     "build": "npm run clean && npm run build:webpack",
+    "prod": "NODE_ENV=production node devServer.js",
     "start": "node devServer.js",
     "lint": "eslint src",
     "postinstall": "node deploy.js"

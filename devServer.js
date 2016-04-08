@@ -41,6 +41,6 @@ app.use(express.static('public'));
 
 app.listen(process.env.PORT || 8080, '0.0.0.0', function onStart(err) {
    if (err) { console.log(err); }
-  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
+  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser. Or post 8080 if running production locally', port, port);
 });
 }
