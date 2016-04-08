@@ -24,23 +24,13 @@ module.exports = {
       }
     })
   ],
-
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
   module: {
-    loaders: [
-      { test: /\.jsx?$/,
-        loader: 'babel?stage=0',
-        include: path.join(__dirname, 'src') },
-      { test: /\.js?$/,
-        loader: 'babel?stage=0',
-        exclude: /node_modules/ },
-       {test: /\.js$/,
+    loaders: [{
+      test: /\.js|\.jsx$/,
       loaders: ['babel'],
       include: path.join(__dirname, 'src')
     },
-    {
+      {
         test: /\.less$/,
         loader: "style!css!less"
       }]
