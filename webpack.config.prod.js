@@ -23,7 +23,8 @@ module.exports = {
         warnings: false
       }
     })
-  ],resolve: {
+  ],
+  resolve: {
     extensions: ['', '.js', '.jsx']
   },
   module: {

@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var webpackMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
+var static_path = path.join(__dirname, 'dist');
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 var port = isDevelopment ? 3000 : process.env.PORT;
@@ -12,38 +13,34 @@ var app = express();
 
 if (isDevelopment) {
   var compiler = webpack(config);
-  var middleware = webpackMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    contentBase: 'src',
-    stats: {
-      colors: true,
-      hash: false,
-      timings: true,
-      chunks: false,
-      chunkModules: false,
-      modules: false
-    }
-  });
 
-  app.use(middleware);
+
+app.use(webpackMiddleware(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
+
   app.use(webpackHotMiddleware(compiler));
+
+  app.use(express.static('public'));
+
   app.get('*', function response(req, res) {
-    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/bundle.js')));
-    res.end();
+    res.sendFile(path.join(__dirname, 'index.html'));
   });
 } else {
-  app.set('port', (process.env.PORT || 5000));
-
-  app.use(express.static(__dirname + '/dist'));
+  app.use(express.static(static_path));
 
   app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, 'dist/bundle.js'));
-  });
-}
+    res.sendFile('index.html', {
+      root: static_path
+    });
+});
 
-app.listen(port, '0.0.0.0', function onStart(err) {
+
+app.listen(process.env.PORT || 8080, '0.0.0.0', function onStart(err) {
   if (err) {
     console.log(err);
   }
   console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
 });
+}
