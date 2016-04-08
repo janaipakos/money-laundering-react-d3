@@ -35,7 +35,7 @@ app.use(webpackMiddleware(webpack(config), {
 } else {
 app.use(express.static('public'));
 
- app.get('/', function response(req, res) {
+ app.get('*', function response(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
   });
 
