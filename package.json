@@ -33,6 +33,10 @@
     "url": "https://github.com/janaipakos/money-laundering-react-d3/issues"
   },
   "homepage": "https://github.com/janaipakos/money-laundering-react-d3",
+  "engines": {
+    "node": "5.8.0",
+    "npm": "3.7.3"
+    },
   "devDependencies": {
 
     "eslint": "^1.10.3",
