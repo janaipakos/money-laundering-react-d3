@@ -34,13 +34,6 @@
   },
   "homepage": "https://github.com/janaipakos/money-laundering-react-d3",
   "devDependencies": {
-    "babel-eslint": "^5.0.0-beta4",
-    "babel-preset-react-hmre": "^1.0.0",
-    "eslint": "^1.10.3",
-    "eslint-plugin-babel": "^3.0.0",
-    "eslint-plugin-react": "^3.11.3",
-    "webpack-dev-middleware": "^1.4.0",
-    "webpack-hot-middleware": "^2.6.0"
   },
   "dependencies": {
     "autobind-decorator": "^1.3.2",
@@ -60,6 +53,13 @@
     "rimraf": "^2.4.3",
      "webpack": "^1.12.9",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "babel-eslint": "^5.0.0-beta4",
+    "babel-preset-react-hmre": "^1.0.0",
+    "eslint": "^1.10.3",
+    "eslint-plugin-babel": "^3.0.0",
+    "eslint-plugin-react": "^3.11.3",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.6.0"
   }
 }
