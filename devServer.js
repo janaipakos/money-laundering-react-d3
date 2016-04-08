@@ -2,9 +2,7 @@ var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
-
 var static_path = path.join(__dirname, 'dist');
-
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 var port = isDevelopment ? 3000 : process.env.PORT;
 var app = express();
