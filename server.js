@@ -1,47 +1,53 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var app = express();
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const app = express();
+const webpackMiddleware = require('webpack-dev-middleware');
+    const webpackHotMiddleware = require('webpack-hot-middleware');
+    const config = require('./webpack.config.dev');
+    const isDevelopment = (process.env.NODE_ENV !== 'production');
+const port = isDevelopment ? 3000 : process.env.PORT;
 
-var static_path = path.join(__dirname, 'dist');
-var isDevelopment = (process.env.NODE_ENV !== 'production');
+const static_path = path.join(__dirname, 'dist');
 
-var port = isDevelopment ? 3000 : process.env.PORT;
+
 
 if (isDevelopment) {
-    var config = require('./webpack.config.dev');
-    var webpackMiddleware = require('webpack-dev-middleware');
-    var webpackHotMiddleware = require('webpack-hot-middleware');
 
+    const compiler = webpack(config);
+  const middleware = webpackMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    contentBase: 'src',
+    stats: {
+      colors: true,
+      hash: false,
+      timings: true,
+      chunks: false,
+      chunkModules: false,
+      modules: false
+    }
+  });
 
-    app.use(webpackMiddleware(webpack(config), {
-        noInfo: true,
-        publicPath: config.output.publicPath
-    }));
-
-    app.use(webpackHotMiddleware(webpack(config)));
-
+    app.use(middleware);
+    app.use(webpackHotMiddleware(compiler));
     app.use(express.static('public'));
 
     app.get('*', function response(req, res) {
-        res.sendFile(path.join(__dirname, 'index.html'));
-    });
+    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'index.html')));
+    res.end();
+  });
 
-    app.listen(3000, 'localhost', function(err) {
-        if (err) { console.log(err);
-            return; }
-        console.log('Listening at http://localhost:3000');
-    });
+} else {
+app.use(express.static(__dirname + '/dist'));
 
+    app.get('*', function response(req, res) {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  });
 }
-    app.use(express.static('public'));
-
-    app.get('*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, 'index.html'));
+   app.listen(port, '0.0.0.0', function onStart(err) {
+  if (err) {
+    console.log(err);
+  }
+  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
 });
-
-    app.listen(process.env.PORT || 8080, '0.0.0.0', function onStart(err) {
-        if (err) { console.log(err); }
-        console.log('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser. Or port 8080 if running production locally', port, port);
-    });
 
