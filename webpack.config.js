@@ -7,9 +7,9 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: 'dist'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -33,11 +33,12 @@ module.exports = {
       test: /\.js|\.jsx$/,
       loaders: ['babel'],
       exclude: /node_modules/,
-      include: path.join(__dirname, 'src')
+      include: path.join(__dirname, '/src/')
     },
       {
         test: /\.less$/,
-        loader: "style!css!less"
+        loader: "style!css!less",
+        include: path.join(__dirname, '/src/')
       }]
   }
 };
