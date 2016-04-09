@@ -4,10 +4,10 @@ var config = require('./config.json');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/index.jsx',
+  entry: './src/index',
   output: {
     path: path.join(path.resolve(path.dirname()), config.publicFolder),
-        publicPath: '/' + config.publicFolder + '/',
+        publicPath: '/public/',
         filename: 'bundle.js'
   },
   plugins: [

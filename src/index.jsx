@@ -12,5 +12,5 @@ String.prototype.decapitalize = function () {
 }
 
 ReactDOM.render(
-    <MLGraph url="data/data.csv" />,
+    <MLGraph url="../data.csv" />,
     document.getElementById('mlgraph'));
