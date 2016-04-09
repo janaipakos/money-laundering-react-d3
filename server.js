@@ -23,7 +23,7 @@ if (isDevelopment) {
 
     app.use(express.static('public'));
 
-    app.get('/', function response(req, res) {
+    app.get('*', function response(req, res) {
         res.sendFile(path.join(__dirname, 'index.html'));
     });
 
@@ -36,12 +36,12 @@ if (isDevelopment) {
 }
     app.use(express.static('public'));
 
-    app.get('/', function response(req, res) {
-        res.sendFile(path.join(__dirname, 'index.html'));
-    });
+    app.get('*', function(req, res) {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
+});
 
-    app.listen(process.env.PORT || 5000, '0.0.0.0', function onStart(err) {
+    app.listen(process.env.PORT || 8080, '0.0.0.0', function onStart(err) {
         if (err) { console.log(err); }
-        console.log('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser. Or port 5000 if running production locally', port, port);
+        console.log('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser. Or port 8080 if running production locally', port, port);
     });
 

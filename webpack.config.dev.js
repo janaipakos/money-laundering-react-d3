@@ -33,7 +33,7 @@ module.exports = {
     },
       {
         test: /\.less$/,
-        loader: "style!css!less"
+        loader: 'style!css!less'
       }]
   }
 };

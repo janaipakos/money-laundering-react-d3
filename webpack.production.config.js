@@ -9,7 +9,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist/'),
     filename: 'bundle.js',
-    publicPath: 'dist'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -37,7 +36,7 @@ module.exports = {
     },
       {
         test: /\.less$/,
-        loader: "style!css!less",
+        loader: 'style!css!less',
         include: path.join(__dirname, '/src/')
       }]
   }

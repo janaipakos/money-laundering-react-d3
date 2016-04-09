@@ -2,20 +2,12 @@
   "name": "Money-Laundering-React-D3.js",
   "version": "1.0.0",
   "description": "A React + D3 histogram showing domestic money laundering statistics",
-  "scripts": {
-    "clean": "rimraf dist",
-    "build:webpack": "NODE_ENV=production webpack --config webpack.config.js --progress --colors",
-    "build": "npm run clean && npm run build:webpack",
-    "prod": "NODE_ENV=production node server.js",
-    "start": "node server.js",
-    "lint": "eslint src",
-     "postinstall": "webpack --config ./webpack.config.js --progress --colors"
-  },
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/janaipakos/money-laundering-react-d3.git"
   },
-  "keywords": [
+   "keywords": [
     "react",
     "reactjs",
     "boilerplate",
@@ -37,6 +29,13 @@
   "engines": {
     "node": "5.8.0",
     "npm": "3.7.3"
+  },
+  "scripts": {
+    "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "prod": "NODE_ENV=production node server",
+    "start": "node server",
+    "lint": "eslint .",
+     "postinstall": "node deploy"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
