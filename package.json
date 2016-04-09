@@ -35,7 +35,7 @@
     "prod": "NODE_ENV=production node server",
     "start": "node server",
     "lint": "eslint src",
-    "postinstall": "webpack --config ./webpack.productionconfig.js --progress --colors"
+    "postinstall": "webpack --config ./webpack.production.config.js --progress --colors"
   },
 
   "devDependencies": {
