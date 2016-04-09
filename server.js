@@ -35,7 +35,7 @@ if (isDevelopment) {
 } else {
     app.use(express.static('public'));
     app.get('*', function(req, res) {
-    res.sendFile('index.html', {root: __dirname});
+    res.sendFile(path.join(__dirname, 'index.html'));
     });
 }
     app.listen(port || 8080, '0.0.0.0', function onStart(err) {
