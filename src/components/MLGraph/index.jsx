@@ -6,7 +6,7 @@ import Histogram from '../Histogram';
 import Controls from './Controls';
 
 
-require('./style.less');
+require('../../../css/style.less');
 
 class MLGraph extends Component {
   constructor() {

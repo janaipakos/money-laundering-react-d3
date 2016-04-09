@@ -1,12 +1,14 @@
 var path = require('path');
 var webpack = require('webpack');
+var config = require('./config.json');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/index',
+  entry: './src/index.jsx',
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
+    path: path.join(path.resolve(path.dirname()), config.publicFolder),
+        publicPath: '/' + config.publicFolder + '/',
+        filename: 'bundle.js'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
@@ -29,7 +31,7 @@ module.exports = {
       {
         test: /\.less$/,
         loader: 'style!css!less',
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'css')
       }]
   }
 };

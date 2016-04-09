@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var config = require('./config.json');
 
 module.exports = {
   // or devtool: 'eval' to debug issues with compiled output:
@@ -13,9 +14,9 @@ module.exports = {
     './src/index'
    ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    path: path.join(path.resolve(path.dirname()), config.publicFolder),
+        publicPath: '/' + config.publicFolder + '/',
+        filename: 'bundle.js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -33,7 +34,8 @@ module.exports = {
     },
       {
         test: /\.less$/,
-        loader: 'style!css!less'
+        loader: 'style!css!less',
+         include: path.join(__dirname, 'css')
       }]
   }
 };
