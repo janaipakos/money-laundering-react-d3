@@ -35,6 +35,7 @@
     "prod": "NODE_ENV=production node server",
     "start": "node server",
     "lint": "eslint src",
+    "deploy": "gh-pages -d ./",
     "postinstall": "node deploy"
   },
   "devDependencies": {
