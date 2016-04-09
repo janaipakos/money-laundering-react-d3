@@ -1,41 +1,32 @@
-var path = require('path');
+'use strict';
+
 var webpack = require('webpack');
+var path = require('path');
 var config = require('./config.json');
 
 module.exports = {
-  // or devtool: 'eval' to debug issues with compiled output:
-  devtool: 'cheap-module-eval-source-map',
-  entry: [
-    // necessary for hot reloading with IE:
-    'eventsource-polyfill',
-    // listen to code updates emitted by hot middleware:
-    'webpack-hot-middleware/client',
-    // your code:
-    './src/index'
-   ],
+    devtool: 'eval',
+    entry: [
+        'webpack-dev-server/client?http://localhost:' + config.devPort,
+        'webpack/hot/only-dev-server',
+        './src/index.jsx'
+    ],
   output: {
     path: path.join(path.resolve(path.dirname()), config.publicFolder),
-        publicPath: '/public/',
+        publicPath: '/' + config.publicFolder + '/',
         filename: 'bundle.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   module: {
-    loaders: [{
-      test: /\.js|\.jsx$/,
-      loaders: ['babel'],
-      exclude: /node_modules/,
-      include: path.join(__dirname, 'src')
-    },
-      {
-        test: /\.less$/,
-        loader: 'style!css!less',
-         include: path.join(__dirname, 'css')
-      }]
+    loaders: [
+      { test: /\.jsx$/, exclude: /node_modules/, loaders: ['react-hot', 'babel'] },
+       { test: /\.less$/, exclude: /node_modules/, loaders: ['style', 'css', 'less'] }
+       ]
   }
 };

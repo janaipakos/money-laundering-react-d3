@@ -7,17 +7,12 @@ module.exports = {
   entry: './src/index',
   output: {
     path: path.join(path.resolve(path.dirname()), config.publicFolder),
-        publicPath: '/public/',
+        publicPath: '/' + config.publicFolder + '/',
         filename: 'bundle.js'
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      compress: {
-        warnings: false
-      }
-    })
-  ],
+        new webpack.optimize.DedupePlugin()
+    ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
@@ -25,13 +20,9 @@ module.exports = {
     loaders: [{
       test: /\.js|\.jsx$/,
       loaders: ['babel'],
-      exclude: /node_modules/,
-      include: path.join(__dirname, 'src')
+      exclude: /node_modules/
     },
-      {
-        test: /\.less$/,
-        loader: 'style!css!less',
-        include: path.join(__dirname, 'css')
-      }]
+      { test: /\.less$/, exclude: /node_modules/, loaders: ['style', 'css', 'less'] }
+      ]
   }
 };
