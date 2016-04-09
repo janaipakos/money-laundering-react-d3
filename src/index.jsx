@@ -12,5 +12,5 @@ String.prototype.decapitalize = function () {
 }
 
 ReactDOM.render(
-    <MLGraph url="../data.csv" />,
+    <MLGraph url="https://raw.githubusercontent.com/janaipakos/money-laundering-react-d3/master/data.csv" />,
     document.getElementById('mlgraph'));

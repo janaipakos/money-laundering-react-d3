@@ -11,22 +11,22 @@ module.exports = {
         'webpack/hot/only-dev-server',
         './src/index.jsx'
     ],
-  output: {
-    path: path.join(path.resolve(path.dirname()), config.publicFolder),
+    output: {
+        path: path.join(path.resolve(path.dirname()), config.publicFolder),
         publicPath: '/' + config.publicFolder + '/',
         filename: 'bundle.js'
-  },
-  plugins: [
+    },
+    plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  module: {
-    loaders: [
-      { test: /\.jsx$/, exclude: /node_modules/, loaders: ['react-hot', 'babel'] },
-       { test: /\.less$/, exclude: /node_modules/, loaders: ['style', 'css', 'less'] }
-       ]
-  }
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+    module: {
+        loaders: [
+            { test: /\.jsx$/, exclude: /node_modules/, loaders: ['react-hot', 'babel'] },
+            { test: /\.less$/, exclude: /node_modules/, loaders: ['style', 'css', 'less'] }
+        ]
+    }
 };

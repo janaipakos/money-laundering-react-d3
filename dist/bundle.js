@@ -68,7 +68,7 @@
 	    return this.charAt(0).toLowerCase() + this.slice(1);
 	};
 	
-	_reactDom2.default.render(_react2.default.createElement(_MLGraph2.default, { url: '../data.csv' }), document.getElementById('mlgraph'));
+	_reactDom2.default.render(_react2.default.createElement(_MLGraph2.default, { url: 'https://raw.githubusercontent.com/janaipakos/money-laundering-react-d3/master/data.csv' }), document.getElementById('mlgraph'));
 
 /***/ },
 /* 1 */

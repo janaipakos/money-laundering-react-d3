@@ -5,7 +5,7 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janaipakos/money-laundering-react-d3.git"
+    "url": "https://github.com/janaipakos/money-laundering-react-d3.git"
   },
   "keywords": [],
   "author": "James Anaipakos <janaipakos@gmail.com> (http://github.com/janaipakos)",
